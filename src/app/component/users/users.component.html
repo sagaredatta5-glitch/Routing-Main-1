@@ -1,0 +1,76 @@
+
+<div class="row mt-4">
+    <div class="col-md-4">
+        <mat-card>
+            <img mat-card-image [src]="userobj.profileImage" alt="">
+
+            <h4 class="font-weight-bold">
+                {{userobj.userName}}
+                <small>({{userobj.userRole}})</small>
+            </h4>
+            <p>
+                {{userobj.profileDescription}}
+            </p>
+            <mat-card-actions class="d-flex justify-content-between">
+                <button
+                [routerLink]="['edit']"
+                 mat-raised-button color="primary">Edit</button>
+                <button
+                (click)="onremove()"
+                 mat-raised-button color="warn">Remove</button>
+
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="col-md-8">
+        <mat-card class="mb-4 basicinfo">
+            <h3 class="font-weight-bold">
+                Basic Information
+            </h3>
+            <p class="m-0">
+                User Id : {{userobj.userId}}
+            </p>
+            <p class="m-0">
+                Experience : {{userobj.experienceYears}}
+            </p>
+            <p class="m-0">
+                Status : <small class="badge" [ngClass]="{
+    'badge-success': userobj.isActive,
+    'badge-danger': !userobj.isActive}">
+                    {{ userobj.isActive ? 'Active' : 'Inactive' }}
+                </small>
+            </p>
+
+        </mat-card>
+
+        <mat-card class="mb-4">
+            <h3 class="font-weight-bold">Skills</h3>
+            <mat-chip-list >
+                <mat-chip *ngFor="let skill of userobj.skills">
+                    {{skill}}
+                </mat-chip>
+            </mat-chip-list>
+
+        </mat-card>
+
+        <mat-card class="mb-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 class="font-weight-bold">Current Address</h3>
+                    <p class="mb-2">{{userobj.address.current.country}}</p>
+                    <p class="mb-2">{{userobj.address.current.state}}</p>
+                    <p class="mb-2">{{userobj.address.current.city}}</p>
+                    <p class="mb-2">{{userobj.address.current.zipcode}}</p>
+                </div>
+                <div class="col-md-6">
+                    <h3 class="font-weight-bold">Permanent Address</h3>
+                    <p class="mb-2">{{userobj.address.permanent.country}}</p>
+                    <p class="mb-2">{{userobj.address.permanent.state}}</p>
+                    <p class="mb-2">{{userobj.address.permanent.city}}</p>
+                    <p class="mb-2">{{userobj.address.permanent.zipcode}}</p>
+
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>

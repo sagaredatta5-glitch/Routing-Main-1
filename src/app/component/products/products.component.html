@@ -1,0 +1,17 @@
+
+<div class="card mt-3" *ngIf="productobj">
+    <div class="card-body">
+        <p>
+            The Product is {{productobj.pname}} an its Status is {{productobj.pstatus}}
+        </p>
+    </div>
+    <div class="card-footer d-flex justify-content-between">
+        <button
+        [routerLink]="['/products',productId,'edit']"
+         class="btn btn-sm btn-outline-primary mr-3">Edit</button>
+        <button
+        (click)="onremove()"
+         class="btn btn-sm btn-outline-danger">Remove</button>
+
+    </div>
+</div>
